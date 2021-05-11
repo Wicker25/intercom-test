@@ -14,3 +14,10 @@ def test_command():
 [user_id=5] Nora Dempsey
 [user_id=6] Theresa Enright
 """
+
+
+def test_command_with_exception():
+    runner = CliRunner()
+    result = runner.invoke(command, ['--dataset=invalid-path.txt', '--max-distance=30.0'])
+
+    assert result.exit_code == 1
